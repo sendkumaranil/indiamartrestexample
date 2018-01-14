@@ -30,4 +30,11 @@ public class Product {
 	public void setProductname(String productname) {
 		this.productname = productname;
 	}
+	@Override
+	public String toString() {
+		return "Product [expdate=" + expdate + ", mfgdate=" + mfgdate + ", price=" + price + ", productname="
+				+ productname + "]";
+	}
+	
+	
 }

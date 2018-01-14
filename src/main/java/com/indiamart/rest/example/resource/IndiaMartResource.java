@@ -2,8 +2,10 @@ package com.indiamart.rest.example.resource;
 
 import java.util.List;
 
-import javax.annotation.Resource;
+
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -13,9 +15,7 @@ import com.anil.indiamart.resource.Product;
 import com.anil.indiamart.resource.ProductCatelogImpl;
 import com.anil.indiamart.resource.ProductCatelogImplService;
 
-/**
- * Root resource (exposed at "myresource" path)
- */
+
 @Path("/products-category")
 public class IndiaMartResource {
 
@@ -53,5 +53,17 @@ public class IndiaMartResource {
 		
 		
         return Response.ok(prod).build();
+    }
+    
+    @POST
+    @Path("/newproduct")
+    @Consumes(MediaType.APPLICATION_JSON)    
+    public Response createProduct(com.indiamart.rest.example.model.Product product){
+    	System.out.println("Resource create new product:");
+    	System.out.println("Product Details:");
+    	System.out.println(product);
+    	String result="Created Product:"+product;
+    	
+    	return Response.status(201).entity(result).build();
     }
 }
